@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { hideSidebar } from '../../../../reducers/navigation/navigationActions';
+import { hideSidebarAction } from '../../../../reducers/navigation/navigationActions';
 
 import './SidebarItem.css';
 
 @connect(null,
 dispatch => ({
-  hideSidebar: () => dispatch(hideSidebar())
+  hideSidebar: () => dispatch(hideSidebarAction())
 }))
 class SidebarItem extends React.Component {
   render() {

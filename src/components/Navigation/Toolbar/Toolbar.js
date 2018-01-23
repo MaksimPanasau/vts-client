@@ -11,7 +11,7 @@ const toolbar = ( props ) => (
 
   <header className="Toolbar">
     <MenuToggle />
-    <Link to="/" >Vacation Tracking System</Link>
+    <Link to="/profile">Vacation Tracking System</Link>
     <div className="Toolbar-Logo">
         <img src={logo} className="Toolbar-logo" alt="logo" />
     </div>
