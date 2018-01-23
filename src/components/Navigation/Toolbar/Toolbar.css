@@ -1,27 +1,24 @@
 .Toolbar {
-    height: 56px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    color: white;
-    background-color: #141EC5;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    box-sizing: border-box;
-    z-index: 90;
+  height: 56px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: white;
+  background-color: #141EC5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 90;
 }
 
-.Toolbar span {
+.Toolbar a {
   font-size: 20px;
+  text-decoration: none;
+  color: white;
 }
-
-/* .Toolbar i {
-  font-size: 25px;
-  cursor: pointer;
-} */
 
 .Toolbar nav {
     height: 100%;
@@ -37,7 +34,7 @@
 }
 
 @media (max-width: 699px) {
-    .Toolbar {
-        display: none;
-    }
+  .Toolbar {
+      display: none;
+  }
 }

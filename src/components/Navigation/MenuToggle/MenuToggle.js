@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { showSidebar } from '../../../reducers/navigation/navigationActions';
+import { showSidebarAction } from '../../../reducers/navigation/navigationActions';
 
 import './MenuToggle.css';
 
 @connect(null,
 dispatch => ({
-  showSidebar: () => dispatch(showSidebar())
+  showSidebar: () => dispatch(showSidebarAction())
 }))
 class MenuToggle extends React.Component {
 

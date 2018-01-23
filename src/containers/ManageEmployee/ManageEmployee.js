@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 
 import './ManageEmployee.css';
-import Input from './Input/Input';
+import Input from '../../components/ValidationInput/ValidationInput';
 import EmployeeModel from '../../model/employee';
 
 import { fetchEmployeeById } from '../../functions/employeeFunctions';
