@@ -1,8 +1,6 @@
 import React from 'react';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
-import './Input.css';
-
 export default class Input extends React.Component {
 
     state = {

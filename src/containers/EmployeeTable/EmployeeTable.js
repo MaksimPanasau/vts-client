@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 
 import ActionBar from '../../containers/ActionBar/ActionBar';
-import SearchControl from '../SearchControl/SearchControl';
+import SearchControl from '../../components/SearchControl/SearchControl';
 import './EmployeeTable.css';
 
 import { fetchEmployeesAction } from '../../reducers/employee/employeeActions';

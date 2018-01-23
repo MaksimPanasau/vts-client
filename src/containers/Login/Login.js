@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import  { Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { translate } from 'react-i18next';
+import { Card } from 'primereact/components/card/Card';
 
 import { login } from '../../functions/loginFunctions';
 import { setNavLabelAction } from '../../reducers/navigation/navigationActions';
@@ -30,7 +31,7 @@ class Login extends React.Component {
       const { t } = this.props;
       if (!window.localStorage.token) {
         return (
-          <div className="Login" >
+          <Card className="Login" >
             <FormGroup>
                 <ControlLabel>{t('login.email')}</ControlLabel>
                 <FormControl type="text" name="email" onChange={this.handleInput} />
@@ -40,7 +41,7 @@ class Login extends React.Component {
                 <FormControl type="password" name="password" onChange={this.handleInput} />
             </FormGroup>
             <Button bsStyle="primary" onClick={ () => login(this.state.email, this.state.password) }>{t('login.login')}</Button>
-          </div>
+          </Card>
         );
       }
       return <Redirect to="/" />
