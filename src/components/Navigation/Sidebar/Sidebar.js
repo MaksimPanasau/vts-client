@@ -6,7 +6,7 @@ import jwtDecode from 'jwt-decode';
 import _ from 'lodash';
 
 import { logout } from '../../../functions/loginFunctions';
-import { hideSidebar } from '../../../reducers/navigation/navigationActions';
+import { hideSidebarAction } from '../../../reducers/navigation/navigationActions';
 import SidebarItem from './SidebarItem/SidebarItem';
 
 import './Sidebar.css';
@@ -16,7 +16,7 @@ import './Sidebar.css';
   sidebarVisible: store.navigation.get('sidebarVisible')
 }),
 dispatch => ({
-  hideSidebar: () => dispatch(hideSidebar())
+  hideSidebar: () => dispatch(hideSidebarAction())
 }))
 class Sidebar extends React.Component {
   render() {
