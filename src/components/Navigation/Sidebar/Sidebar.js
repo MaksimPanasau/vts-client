@@ -21,7 +21,7 @@ dispatch => ({
 class Sidebar extends React.Component {
   render() {
     const { t, i18n } = this.props;
-    const roles = localStorage.token ? jwtDecode(localStorage.token).roles : [];
+    const roles = localStorage.token ? (jwtDecode(localStorage.token).roles || []) : [];
     const roleLinks = {
       ADMIN: [
         { id: 'users', label: t('navigation.sidebar.users'), icon: 'fa fa-address-book', path: '/users' }
