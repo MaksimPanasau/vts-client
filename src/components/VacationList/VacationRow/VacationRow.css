@@ -1,0 +1,12 @@
+.VacationRow {
+  margin-bottom: 10px;
+}
+
+.VacationRow div.ui-panel-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.VacationRow-Days {
+  display: flex;
+}

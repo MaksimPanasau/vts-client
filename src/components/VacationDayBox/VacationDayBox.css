@@ -1,0 +1,24 @@
+.VacationDayBox {
+  width: 60px;
+  height: 60px;
+  padding: 5px;
+  border: 1px solid #eee;
+  margin-right: 3px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.VacationDayBox div.VacationDayBox > div.partial-time {
+  background-color: #eeeeee;
+}
+
+.VacationDayBox.active {
+  border: 2px solid blue!important;
+}
+
+.VacationDayBox div.VacationDayBox-Hours {
+  color: #aaa;
+  font-size: 12px;
+}

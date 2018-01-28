@@ -44,7 +44,7 @@ class Sidebar extends React.Component {
     const linksOrder = ['profile', 'users', 'employees', 'vacations', 'logout'];
     const links = _.uniqBy(roles.reduce((res, role) => res.concat(roleLinks[role]), []).concat(commonLinks), 'id');
     const sortedLinks = _.sortBy(links, link => linksOrder.findIndex(ord => ord === link.id));
-    const linksToRender = sortedLinks.map(link => <SidebarItem { ...link } />);
+    const linksToRender = sortedLinks.map(link => <SidebarItem key={link.id} { ...link } />);
     return (
       <PrimeSidebar className="Sidebar" visible={this.props.sidebarVisible} onHide={ this.props.hideSidebar }>
         { linksToRender }

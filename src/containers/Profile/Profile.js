@@ -1,27 +1,64 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Card } from 'primereact/components/card/Card';
+import { Button } from 'primereact/components/button/Button';
 
+import BasePage from '../../hoc/layout/BasePage';
 import { setNavLabelAction } from '../../reducers/navigation/navigationActions';
+import { fetchProfileDataAction, submitProfileVacationAction } from '../../reducers/profile/profileActions';
+import ManageVacation from './ManageVacation/ManageVacation';
+import VacationList from '../../components/VacationList/VacationList';
 
-@connect(null, dispatch => ({
-  setNavLabel: (text) => dispatch(setNavLabelAction(text))
+import './Profile.css';
+
+@connect(store => ({
+    employee: store.profile.get('employee'),
+    vacations: store.profile.get('vacations'),
+    error: store.profile.get('error')
+}),
+dispatch => ({
+  setNavLabel: (text) => dispatch(setNavLabelAction(text)),
+  fetchProfileData: () => dispatch(fetchProfileDataAction()),
+  submitProfileVacation: (vacation) => dispatch(submitProfileVacationAction(vacation))
 }))
 class Profile extends Component {
 
+  state = {
+    manageVacationVisible: false
+  }
+
   componentDidMount() {
     this.props.setNavLabel('Profile');
+    this.props.fetchProfileData();
+  }
+
+  handleSubmitVacation = (vacation) => {
+    this.props.submitProfileVacation();
+    this.setState({ manageVacationVisible: false });
   }
 
   render() {
+    let display = this.props.error;
+    if (!this.props.error) {
+      display = (
+        <Fragment>
+          <Card style={{ display: this.state.manageVacationVisible && 'none' }}>
+            My Requests
+            <VacationList vacations={this.props.vacations} />
+            <br/><br/>
+            <Button onClick={() => this.setState({ manageVacationVisible: true })}>Add Vacation</Button>
+            <Button onClick={() => this.setState({ manageVacationVisible: true })}>Add Sick Leave</Button>
+          </Card>
+          <Card style={{ display: !this.state.manageVacationVisible && 'none' }}>
+            <ManageVacation onSubmit={this.props.submitProfileVacation} onClose={() => this.setState({ manageVacationVisible: false })} />
+          </Card>
+        </Fragment>
+      );
+    }
     return (
-      <div>
-        Profile Page
-
-        <br/>
-        - change password
-        <br/>
-        - crud own vacations
-      </div>
+      <BasePage className="Profile">
+        {display}
+      </BasePage>
     );
   }
 }
