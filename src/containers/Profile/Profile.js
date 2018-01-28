@@ -33,7 +33,7 @@ class Profile extends Component {
   }
 
   handleSubmitVacation = (vacation) => {
-    this.props.submitProfileVacation();
+    this.props.submitProfileVacation(vacation);
     this.setState({ manageVacationVisible: false });
   }
 
