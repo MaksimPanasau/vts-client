@@ -15,7 +15,7 @@ class Vacations extends Component {
   render() {
     return (
       <div>
-        Users Page
+        Vacations Page
       </div>
     );
   }

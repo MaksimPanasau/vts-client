@@ -1,0 +1,28 @@
+.Profile > div.ui-card {
+  margin-bottom: 5px;
+  border: none;
+}
+
+.Profile > div.ui-card div.ui-card {
+  margin-top: 5px;
+}
+
+.Profile div.fc.ui-widget {
+  width: 700px;
+}
+
+.Profile-Modal {
+  width: 900px;
+}
+
+@media (max-width: 800px) {
+    .Profile div.fc.ui-widget {
+        width: 600px;
+    }
+}
+
+@media (max-width: 700px) {
+    .Profile div.fc.ui-widget {
+        width: auto;
+    }
+}
