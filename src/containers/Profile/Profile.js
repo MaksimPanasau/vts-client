@@ -50,7 +50,7 @@ class Profile extends Component {
             <Button onClick={() => this.setState({ manageVacationVisible: true })}>Add Sick Leave</Button>
           </Card>
           <Card style={{ display: !this.state.manageVacationVisible && 'none' }}>
-            <ManageVacation onSubmit={this.props.submitProfileVacation} onClose={() => this.setState({ manageVacationVisible: false })} />
+            <ManageVacation onSubmit={this.handleSubmitVacation} onClose={() => this.setState({ manageVacationVisible: false })} />
           </Card>
         </Fragment>
       );
