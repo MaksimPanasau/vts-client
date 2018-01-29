@@ -12,8 +12,7 @@ import Input from 'components/ValidationInput/ValidationInput';
 import EmployeeModel from '@/model/employee';
 
 import { fetchEmployeeById } from '@/functions/employeeFunctions';
-import { addEmployeeAction, updateEmployeeAction } from 'reducers/employee/employeeActions';
-import { setNavLabelAction } from 'reducers/navigation/navigationActions';
+import { addEmployeeAction, updateEmployeeAction, setNavLabelAction } from 'store/actions';
 
 @translate('translations')
 @connect(

@@ -4,8 +4,7 @@ import { Card } from 'primereact/components/card/Card';
 
 import Button from 'components/common/Button/Button';
 import BasePage from '@/hoc/layout/BasePage';
-import { setNavLabelAction } from 'reducers/navigation/navigationActions';
-import { fetchProfileDataAction, submitProfileVacationAction } from '../../reducers/profile/profileActions';
+import { setNavLabelAction, fetchProfileDataAction, submitProfileVacationAction } from 'store/actions';
 import ManageVacation from './ManageVacation/ManageVacation';
 import VacationList from 'components/VacationList/VacationList';
 

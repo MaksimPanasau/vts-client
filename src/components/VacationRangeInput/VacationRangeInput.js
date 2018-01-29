@@ -4,7 +4,7 @@ import { SingleDatePicker } from 'react-dates';
 import { Slider } from 'primereact/components/slider/Slider';
 import moment from 'moment';
 
-import { fetchHolidaysAction } from 'reducers/calendar/calendarActions';
+import { fetchHolidaysAction } from 'store/actions';
 import VacationDayBox from '../VacationDayBox/VacationDayBox';
 import Backdrop from 'components/common/Backdrop/Backdrop';
 import './VacationRangeInput.css';
