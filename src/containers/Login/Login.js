@@ -5,8 +5,8 @@ import  { Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { translate } from 'react-i18next';
 import { Card } from 'primereact/components/card/Card';
 
-import { login } from '../../functions/loginFunctions';
-import { setNavLabelAction } from '../../reducers/navigation/navigationActions';
+import { login } from '@/functions/loginFunctions';
+import { setNavLabelAction } from 'reducers/navigation/navigationActions';
 
 import './Login.css';
 

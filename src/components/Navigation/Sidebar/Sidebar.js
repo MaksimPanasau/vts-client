@@ -5,8 +5,8 @@ import { Sidebar as PrimeSidebar } from 'primereact/components/sidebar/Sidebar';
 import jwtDecode from 'jwt-decode';
 import _ from 'lodash';
 
-import { logout } from '../../../functions/loginFunctions';
-import { hideSidebarAction } from '../../../reducers/navigation/navigationActions';
+import { logout } from '@/functions/loginFunctions';
+import { hideSidebarAction } from 'reducers/navigation/navigationActions';
 import SidebarItem from './SidebarItem/SidebarItem';
 
 import './Sidebar.css';

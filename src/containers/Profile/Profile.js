@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'primereact/components/card/Card';
-import { Button } from 'primereact/components/button/Button';
 
-import BasePage from '../../hoc/layout/BasePage';
-import { setNavLabelAction } from '../../reducers/navigation/navigationActions';
+import Button from 'components/common/Button/Button';
+import BasePage from '@/hoc/layout/BasePage';
+import { setNavLabelAction } from 'reducers/navigation/navigationActions';
 import { fetchProfileDataAction, submitProfileVacationAction } from '../../reducers/profile/profileActions';
 import ManageVacation from './ManageVacation/ManageVacation';
-import VacationList from '../../components/VacationList/VacationList';
+import VacationList from 'components/VacationList/VacationList';
 
 import './Profile.css';
 

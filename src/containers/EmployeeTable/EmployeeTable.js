@@ -7,13 +7,13 @@ import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 
-import ActionBar from '../../containers/ActionBar/ActionBar';
-import SearchControl from '../../components/SearchControl/SearchControl';
+import ActionBar from 'containers/ActionBar/ActionBar';
+import SearchControl from 'components/SearchControl/SearchControl';
 import './EmployeeTable.css';
 
-import { fetchEmployeesAction } from '../../reducers/employee/employeeActions';
-import { setErrorAction } from '../../reducers/alert/alertActions';
-import { setNavLabelAction } from '../../reducers/navigation/navigationActions';
+import { fetchEmployeesAction } from 'reducers/employee/employeeActions';
+import { setErrorAction } from 'reducers/alert/alertActions';
+import { setNavLabelAction } from 'reducers/navigation/navigationActions';
 
 @translate('translations')
 @connect(
