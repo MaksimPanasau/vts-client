@@ -8,12 +8,12 @@ import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 
 import './ManageEmployee.css';
-import Input from '../../components/ValidationInput/ValidationInput';
-import EmployeeModel from '../../model/employee';
+import Input from 'components/ValidationInput/ValidationInput';
+import EmployeeModel from '@/model/employee';
 
-import { fetchEmployeeById } from '../../functions/employeeFunctions';
-import { addEmployeeAction, updateEmployeeAction } from '../../reducers/employee/employeeActions';
-import { setNavLabelAction } from '../../reducers/navigation/navigationActions';
+import { fetchEmployeeById } from '@/functions/employeeFunctions';
+import { addEmployeeAction, updateEmployeeAction } from 'reducers/employee/employeeActions';
+import { setNavLabelAction } from 'reducers/navigation/navigationActions';
 
 @translate('translations')
 @connect(

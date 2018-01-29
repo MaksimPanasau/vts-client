@@ -11,9 +11,9 @@ import EmployeeBalance from './EmployeeBalance';
 
 import EmployeeModel from '../../model/employee';
 
-import { fetchEmployeeById } from '../../functions/employeeFunctions';
-import { deleteEmployeeAction } from '../../reducers/employee/employeeActions';
-import { setNavLabelAction } from '../../reducers/navigation/navigationActions';
+import { fetchEmployeeById } from '@/functions/employeeFunctions';
+import { deleteEmployeeAction } from 'reducers/employee/employeeActions';
+import { setNavLabelAction } from 'reducers/navigation/navigationActions';
 
 @translate('translations')
 @connect(

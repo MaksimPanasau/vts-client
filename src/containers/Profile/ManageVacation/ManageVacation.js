@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { InputText } from 'primereact/components/inputtext/InputText';
-import { Button } from 'primereact/components/button/Button';
 
-import VacationRangeInput from '../../../components/VacationRangeInput/VacationRangeInput';
+import Button from 'components/common/Button/Button';
+import VacationRangeInput from 'components/VacationRangeInput/VacationRangeInput';
 import './ManageVacation.css';
 
 class ManageVacation extends Component {

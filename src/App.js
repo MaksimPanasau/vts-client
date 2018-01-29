@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Layout from './hoc/layout/Layout';
-import Routes from './Routes';
+import Layout from '@/hoc/layout/Layout';
+import Routes from '@/Routes';
 
 import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/omega/theme.css';
