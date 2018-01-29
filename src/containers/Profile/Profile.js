@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Card } from 'primereact/components/card/Card';
 
 import Button from 'components/common/Button/Button';
 import BasePage from '@/hoc/layout/BasePage';
@@ -41,16 +40,17 @@ class Profile extends Component {
     if (!this.props.error) {
       display = (
         <Fragment>
-          <Card style={{ display: this.state.manageVacationVisible && 'none' }}>
+          <div style={{ display: this.state.manageVacationVisible && 'none' }}>
+            <br/>
             My Requests
             <VacationList vacations={this.props.vacations} />
-            <br/><br/>
+            <br/>
             <Button onClick={() => this.setState({ manageVacationVisible: true })}>Add Vacation</Button>
             <Button onClick={() => this.setState({ manageVacationVisible: true })}>Add Sick Leave</Button>
-          </Card>
-          <Card style={{ display: !this.state.manageVacationVisible && 'none' }}>
+          </div>
+          <div style={{ display: !this.state.manageVacationVisible && 'none' }}>
             <ManageVacation onSubmit={this.handleSubmitVacation} onClose={() => this.setState({ manageVacationVisible: false })} />
-          </Card>
+          </div>
         </Fragment>
       );
     }
