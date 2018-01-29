@@ -9,15 +9,20 @@ class ManageVacation extends Component {
 
   state = {
     vacation: {
-      days: []
+      days: [],
+      description: ''
     }
+  }
+
+  changeDescriptionHandler = (event) => {
+    this.setState({ vacation: {...this.state.vacation, description: event.target.value } });
   }
 
   render() {
     return (
       <div className="ManageVacation">
         <span className="ui-float-label">
-          <InputText id="float-input" type="text" size="30" />
+          <InputText id="float-input" type="text" size="30" value={this.state.description} onChange={this.changeDescriptionHandler} />
           <label htmlFor="float-input">Description</label>
         </span>
         <div>

@@ -1,10 +1,16 @@
 .VacationRow {
   margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.75)!important;
+  border-color: rgba(255, 255, 255, 0.9)!important;
 }
 
 .VacationRow div.ui-panel-content {
   display: flex;
   justify-content: space-between;
+}
+
+.VacationRow div.ui-panel-titlebar {
+  opacity: 0.75;
 }
 
 .VacationRow-Days {
