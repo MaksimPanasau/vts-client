@@ -1,5 +1,8 @@
 import { Map } from 'immutable';
-import EmployeeModel from '../../model/employee';
+
+import EmployeeModel from '@/model/employee';
+import { pendingFor, fulfilledFor, rejectedFor } from 'store/actions/actionTypes';
+import * as actionTypes from 'store/actions/actionTypes';
 
 const initialState = new Map({
   employee: new EmployeeModel(),
@@ -10,24 +13,24 @@ const initialState = new Map({
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'FETCH_PROFILE_DATA_PENDING':
+    case pendingFor(actionTypes.FETCH_PROFILE_DATA):
       return state.set('loading', true);
-    case 'FETCH_PROFILE_DATA_FULFILLED':
+    case fulfilledFor(actionTypes.FETCH_PROFILE_DATA):
       return state.set('loading', false)
                   .set('error', null)
                   .set('employee', action.payload.employee)
                   .set('vacations', action.payload.vacations);
-    case 'FETCH_PROFILE_DATA_REJECTED':
+    case rejectedFor(actionTypes.FETCH_PROFILE_DATA):
       return state.set('loading', false)
                   .set('error', action.payload.error);
 
-    case 'SUBMIT_PROFILE_VACATION_PENDING':
+    case pendingFor(actionTypes.SUBMIT_PROFILE_VACATION):
       return state.set('loading', true);
-    case 'SUBMIT_PROFILE_VACATION_FULFILLED':
+    case fulfilledFor(actionTypes.SUBMIT_PROFILE_VACATION):
       return state.set('loading', false)
                   .set('error', false)
                   .set('vacations', [...state.get('vacations'), action.payload.vacation]);
-    case 'SUBMIT_PROFILE_VACATION_REJECTED':
+    case rejectedFor(actionTypes.SUBMIT_PROFILE_VACATION):
       return state.set('loading', true)
                   .set('error', action.payload);
 

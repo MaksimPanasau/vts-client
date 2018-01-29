@@ -1,5 +1,8 @@
 import { Map } from 'immutable';
 
+import { pendingFor, fulfilledFor, rejectedFor } from 'store/actions/actionTypes';
+import * as actionTypes from 'store/actions/actionTypes';
+
 const initialState = new Map({
   holidays: new Map(),
   loading: false
@@ -8,13 +11,13 @@ const initialState = new Map({
 const reducer = (state = initialState, action) => {
   switch (action.type) {
 
-    case 'FETCH_CALENDAR_HOLIDAYS_PENDING':
+    case pendingFor(actionTypes.FETCH_HOLIDAYS):
       return state.set('loading', true);
-    case 'FETCH_CALENDAR_HOLIDAYS_FULFILLED':
+    case fulfilledFor(actionTypes.FETCH_HOLIDAYS):
       return state.set('loading', false)
                   .set('holidays',
                         state.get('holidays').set(action.payload.year, new Map({ days: action.payload.days })));
-    case 'FETCH_CALENDAR_HOLIDAYS_REJECTED':
+    case rejectedFor(actionTypes.FETCH_HOLIDAYS):
       return state.set('loading', false);
     default: return state;
   }

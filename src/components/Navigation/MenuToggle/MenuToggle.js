@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { showSidebarAction } from 'reducers/navigation/navigationActions';
+import { showSidebarAction } from 'store/actions';
 
 import './MenuToggle.css';
 
@@ -18,9 +18,13 @@ class MenuToggle extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="MenuToggle" >
-          <i className="fa fa-bars" onClick={ this.props.showSidebar } />
-        </div>
+        {
+          window.localStorage.token ?
+          <div className="MenuToggle" >
+            <i className="fa fa-bars" onClick={ this.props.showSidebar } />
+          </div>
+          : null
+        }
       </React.Fragment>
 
     );

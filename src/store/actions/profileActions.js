@@ -1,10 +1,11 @@
-import employees from '../../server/employees';
-import vacations from '../../server/vacations';
-import EmployeeModel from '../../model/employee';
+import * as actionTypes from 'store/actions/actionTypes';
+import employees from '@/server/employees';
+import vacations from '@/server/vacations';
+import EmployeeModel from '@/model/employee';
 
 export const fetchProfileDataAction = () => {
   return ({
-    type: 'FETCH_PROFILE_DATA',
+    type: actionTypes.FETCH_PROFILE_DATA,
     payload: () => {
       return employees.get('/me').then(response => {
         return Promise.resolve({ employee: new EmployeeModel(response.data) });
@@ -25,7 +26,7 @@ export const fetchProfileDataAction = () => {
 
 export const submitProfileVacationAction = (vacation) => {
   return ({
-    type: 'SUBMIT_PROFILE_VACATION',
+    type: actionTypes.SUBMIT_PROFILE_VACATION,
     payload: () => {
       return vacations.post('', vacation)
       .then(response => ({ vacation: response.data.vacation }))

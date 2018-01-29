@@ -11,9 +11,7 @@ import ActionBar from 'containers/ActionBar/ActionBar';
 import SearchControl from 'components/SearchControl/SearchControl';
 import './EmployeeTable.css';
 
-import { fetchEmployeesAction } from 'reducers/employee/employeeActions';
-import { setErrorAction } from 'reducers/alert/alertActions';
-import { setNavLabelAction } from 'reducers/navigation/navigationActions';
+import { fetchEmployeesAction, setErrorAction, setNavLabelAction } from 'store/actions';
 
 @translate('translations')
 @connect(

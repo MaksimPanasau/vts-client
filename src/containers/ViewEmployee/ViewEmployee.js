@@ -12,8 +12,7 @@ import EmployeeBalance from './EmployeeBalance';
 import EmployeeModel from '../../model/employee';
 
 import { fetchEmployeeById } from '@/functions/employeeFunctions';
-import { deleteEmployeeAction } from 'reducers/employee/employeeActions';
-import { setNavLabelAction } from 'reducers/navigation/navigationActions';
+import { deleteEmployeeAction, setNavLabelAction } from 'store/actions';
 
 @translate('translations')
 @connect(
