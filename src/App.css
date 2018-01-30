@@ -15,3 +15,7 @@ body {
 div.ReactTable  {
   background-color: white;
 }
+
+div.ui-widget-overlay {
+  height: 10000%!important;
+}
