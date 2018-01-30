@@ -1,11 +1,13 @@
+.Sidebar {
+  height: 10000%!important;
+}
+
 .Sidebar a.ui-sidebar-close {
   display: none;
 }
 
 .Sidebar > div {
-  position: absolute;
-  bottom: 20px;
-  right: 5px;
+  margin-top: 20px;
 }
 
 .Sidebar > div > a {
