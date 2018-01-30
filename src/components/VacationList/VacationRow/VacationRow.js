@@ -3,14 +3,16 @@ import moment from 'moment';
 import { Panel } from 'primereact/components/panel/Panel';
 import { Bar } from 'react-chartjs-2';
 
+import IconButton from 'components/common/IconButton/IconButton';
 import './VacationRow.css';
 
 class VacationRow extends Component {
 
   render() {
-    const labels = this.props.vacation.days.map(day => moment(day.moment).format("MMM DD"));
+    const { vacation } = this.props;
+    const labels = vacation.days.map(day => moment(day.moment).format("MMM DD"));
     const colors = Array(labels.length).fill('#0CB7E8');
-    const values = this.props.vacation.days.map(day => day.hours);
+    const values = vacation.days.map(day => day.hours);
     const chartData = {
       labels: labels,
       datasets: [
@@ -38,15 +40,23 @@ class VacationRow extends Component {
         }]
       }
     };
-    return (<Panel className="VacationRow" header={this.props.vacation.description}>
+    const totalHours = vacation.days.map(day => day.hours).reduce((total, hours) => total + hours, 0);
+    const durationDays = Math.trunc(totalHours / 8);
+    const durationHours = totalHours - durationDays * 8;
+    const header = (<div className="VacationRow-Header">
+      <div>{`${durationDays}d`}{durationHours ? ` ${durationHours}h` : ''}</div>
+      <div>{vacation.type}</div>
+      <div>{vacation.description}</div>
+    </div>);
+    return (<Panel className="VacationRow" header={header}>
       <div className="VacationRow-Days">
         <div>
           <Bar data={chartData} options={chartOptions} />
         </div>
       </div>
       <div className="VacationRow-Buttons">
-        <button>Edit</button>
-        <button>Cancel</button>
+        <IconButton icon='fa fa-edit' />
+        <IconButton icon='fa fa-remove' />
       </div>
     </Panel>);
   }

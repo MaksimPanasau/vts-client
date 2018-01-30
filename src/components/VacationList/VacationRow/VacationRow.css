@@ -13,6 +13,11 @@
   opacity: 0.75;
 }
 
+.VacationRow-Header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .VacationRow-Days {
   display: flex;
 }
