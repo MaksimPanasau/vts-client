@@ -110,7 +110,9 @@ class VacationRangeInput extends Component {
                   if (!holidays) {
                     return true;
                   }
-                  const index = holidays.findIndex(day => {
+                  const vacationDays = this.props.vacations.map(vac => vac.days).reduce((total, days) => total.concat(days), []);
+                  const blockedDays = [...holidays, ...vacationDays];
+                  const index = blockedDays.findIndex(day => {
                     return isSameDay(moment(day.moment), date)
                   });
                   return index > -1 || date.isoWeekday() > 5;

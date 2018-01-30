@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { InputText } from 'primereact/components/inputtext/InputText';
 
 import Button from 'components/common/Button/Button';
 import VacationRangeInput from 'components/VacationRangeInput/VacationRangeInput';
 import './ManageVacation.css';
 
+@connect(store => ({
+  vacations: store.profile.get('vacations')
+}))
 class ManageVacation extends Component {
 
   state = {
@@ -26,7 +30,7 @@ class ManageVacation extends Component {
           <label htmlFor="float-input">Description</label>
         </span>
         <div>
-          <VacationRangeInput onChange={ (days) => {
+          <VacationRangeInput vacations={this.props.vacations} onChange={ (days) => {
             this.setState({ vacation: { ...this.state.vacation, days }});
           }} />
         </div>
