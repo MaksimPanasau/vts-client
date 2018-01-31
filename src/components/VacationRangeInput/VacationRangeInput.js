@@ -50,7 +50,7 @@ class VacationRangeInput extends Component {
 
       if (days.length === filtered.length) {
         filtered.push({
-          moment: moment(date),
+          moment: moment.utc(date),
           hours: 8
         });
       }
@@ -113,7 +113,7 @@ class VacationRangeInput extends Component {
                   const vacationDays = this.props.vacations.map(vac => vac.days).reduce((total, days) => total.concat(days), []);
                   const blockedDays = [...holidays, ...vacationDays];
                   const index = blockedDays.findIndex(day => {
-                    return isSameDay(moment(day.moment), date)
+                    return isSameDay(moment.utc(day.moment), date)
                   });
                   return index > -1 || date.isoWeekday() > 5;
                 }}
