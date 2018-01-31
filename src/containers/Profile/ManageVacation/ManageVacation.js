@@ -22,6 +22,16 @@ class ManageVacation extends Component {
     this.setState({ vacation: {...this.state.vacation, description: event.target.value } });
   }
 
+  submitHandler = () => {
+    this.props.onSubmit(this.state.vacation);
+    this.setState({ vacation: { days: [], description: '' } });
+  }
+
+  closeHandler = () => {
+    this.props.onClose();
+    this.setState({ vacation: { days: [], description: '' } });
+  }
+
   render() {
     return (
       <div className="ManageVacation">
