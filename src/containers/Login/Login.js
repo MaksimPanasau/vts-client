@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import  { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { translate } from 'react-i18next';
 
+import Input from 'components/common/Input/Input';
 import Button from 'components/common/Button/Button';
 import { login } from '@/functions/loginFunctions';
 import { setNavLabelAction } from 'store/actions';
@@ -29,22 +28,13 @@ class Login extends React.Component {
 
     render() {
       const { t } = this.props;
-      if (!window.localStorage.token) {
-        return (
-          <div className="Login" >
-            <FormGroup>
-                <ControlLabel>{t('login.email')}</ControlLabel>
-                <FormControl type="text" name="email" onChange={this.handleInput} />
-            </FormGroup>
-            <FormGroup>
-                <ControlLabel>{t('login.password')}</ControlLabel>
-                <FormControl type="password" name="password" onChange={this.handleInput} />
-            </FormGroup>
-            <Button bsStyle="primary" onClick={ () => login(this.state.email, this.state.password) }>{t('login.login')}</Button>
-          </div>
-        );
-      }
-      return <Redirect to="/" />
+      return (
+        <div className="Login" >
+          <Input id="login-email" name="email" label={t('login.email')} onChange={this.handleInput} />
+          <Input id="login-password" name="password" label={t('login.password')} type="password" onChange={this.handleInput} />
+          <Button bsStyle="primary" onClick={ () => login(this.state.email, this.state.password) }>{t('login.login')}</Button>
+        </div>
+      );
     }
 };
 

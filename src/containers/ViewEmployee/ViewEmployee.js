@@ -1,18 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 
 import './ViewEmployee.css';
 import DisplayRow from './DisplayRow';
 import EmployeeBalance from './EmployeeBalance';
-
-import EmployeeModel from '../../model/employee';
-
+import EmployeeModel from '@/model/employee';
 import { fetchEmployeeById } from '@/functions/employeeFunctions';
 import { deleteEmployeeAction, setNavLabelAction } from 'store/actions';
+import Button from 'components/common/Button/Button';
 
 @translate('translations')
 @connect(

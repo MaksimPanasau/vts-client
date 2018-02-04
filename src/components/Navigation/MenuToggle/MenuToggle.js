@@ -17,16 +17,9 @@ class MenuToggle extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        {
-          window.localStorage.token ?
-          <div className="MenuToggle" >
-            <i className="fa fa-bars" onClick={ this.props.showSidebar } />
-          </div>
-          : null
-        }
-      </React.Fragment>
-
+      <div className="MenuToggle" >
+        <i className="fa fa-bars" onClick={ this.props.showSidebar } />
+      </div>
     );
   }
 }
