@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
-import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 
 import ActionBar from 'containers/ActionBar/ActionBar';
 import SearchControl from 'components/SearchControl/SearchControl';
+import Button from 'components/common/Button/Button';
 import './EmployeeTable.css';
 
 import { fetchEmployeesAction, setErrorAction, setNavLabelAction } from 'store/actions';

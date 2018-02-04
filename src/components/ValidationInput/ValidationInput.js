@@ -1,23 +1,26 @@
 import React from 'react';
-import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
-export default class Input extends React.Component {
+import Input from 'components/common/Input/Input';
+
+export default class ValidationInput extends React.Component {
 
     state = {
-        validationState: null
+      validationState: null
     }
 
     handleChange = (event) => {
-        const valid = this.props.validator(event.target.value);
-        this.setState({ validationState: valid ? null : 'error '});
-        this.props.changed(event);
-     }
+      const valid = this.props.validator(event.target.value);
+      this.setState({ validationState: valid ? null : 'error '});
+      this.props.changed(event);
+    }
 
     render() {
-        return (
-            <FormGroup validationState={this.state.validationState}>
-                <ControlLabel>{this.props.label}</ControlLabel>
-                <FormControl type="text" name={this.props.name} value={this.props.value} onChange={this.handleChange} />
-            </FormGroup>);
+      return (
+        <Input name={this.props.name} value={this.props.value} onChange={this.handleChange} />
+          // <FormGroup validationState={this.state.validationState}>
+          //     <ControlLabel>{this.props.label}</ControlLabel>
+          //     <FormControl type="text" name={this.props.name} value={this.props.value} onChange={this.handleChange} />
+          // </FormGroup>
+        );
     }
 };

@@ -1,18 +1,16 @@
 import React from 'react';
-import { FormGroup, InputGroup, FormControl, Button } from 'react-bootstrap';
 import { translate } from 'react-i18next';
+
+import Input from 'components/common/Input/Input';
+import Button from 'components/common/Button/Button';
 
 const searchControl = (props) => {
   const { t } = props;
   return (
-      <FormGroup>
-          <InputGroup>
-              <FormControl type="text" placeholder={t('search.placeholder')} onChange={props.changed} value={props.text} />
-              <InputGroup.Button>
-                  <Button bsStyle="primary" onClick={props.canceled}>{t('common.btn.clear')}</Button>
-              </InputGroup.Button>
-          </InputGroup>
-      </FormGroup>
+    <div>
+      <Input label={t('search.placeholder')} onChange={props.changed} value={props.text} />
+      <Button onClick={props.canceled}>{t('common.btn.clear')}</Button>
+    </div>
   );
 }
 

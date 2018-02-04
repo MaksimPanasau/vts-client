@@ -36,17 +36,20 @@ class Profile extends Component {
   }
 
   render() {
+    console.log(this.props.employee);
     let display = this.props.error;
-    if (!this.props.error) {
+    if (!this.props.error && this.props.employee) {
       display = (
         <Fragment>
           <div style={{ display: this.state.manageVacationVisible && 'none' }}>
-            <br/>
-            My Requests
+            <div class="ui-g Profile-Header">
+              <div class="ui-g-6">{this.props.employee.balanceFormatted}</div>
+              <div class="ui-g-6">
+                <Button onClick={() => this.setState({ manageVacationVisible: true })}>Add Vacation</Button>
+                <Button onClick={() => this.setState({ manageVacationVisible: true })}>Add Sick Leave</Button>
+              </div>
+            </div>
             <VacationList vacations={this.props.vacations} />
-            <br/>
-            <Button onClick={() => this.setState({ manageVacationVisible: true })}>Add Vacation</Button>
-            <Button onClick={() => this.setState({ manageVacationVisible: true })}>Add Sick Leave</Button>
           </div>
           <div style={{ display: !this.state.manageVacationVisible && 'none' }}>
             <ManageVacation onSubmit={this.handleSubmitVacation} onClose={() => this.setState({ manageVacationVisible: false })} />

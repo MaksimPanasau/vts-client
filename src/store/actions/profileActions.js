@@ -8,7 +8,7 @@ export const fetchProfileDataAction = () => {
     type: actionTypes.FETCH_PROFILE_DATA,
     payload: () => {
       return employees.get('/me').then(response => {
-        return Promise.resolve({ employee: new EmployeeModel(response.data) });
+        return Promise.resolve({ employee: new EmployeeModel(response.data.employee) });
       })
       .catch(error => {
         if (error) {

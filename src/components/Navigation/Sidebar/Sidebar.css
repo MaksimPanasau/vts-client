@@ -1,5 +1,5 @@
 .Sidebar {
-  height: 10000%!important;
+  height: 10000vh!important;
 }
 
 .Sidebar a.ui-sidebar-close {
@@ -21,4 +21,8 @@
 
 .Sidebar > div > a:hover {
   color: #343EE5;
+}
+
+div.ui-widget-overlay {
+  height: 10000%;
 }

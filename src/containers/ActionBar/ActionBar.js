@@ -1,16 +1,15 @@
 import React from 'react';
-import { Form, FormGroup } from 'react-bootstrap';
 
 const actionBar = (props) => (
-    <Form inline style={{ marginBottom: '5px' }} >
-        <FormGroup>
+    <div style={{ marginBottom: '5px' }} >
+        <div>
             {props.left}
-        </FormGroup>
+        </div>
         {' '}
-        <FormGroup>
+        <div>
             {props.right}
-        </FormGroup>
-    </Form>
+        </div>
+    </div>
 );
 
 export default actionBar;
