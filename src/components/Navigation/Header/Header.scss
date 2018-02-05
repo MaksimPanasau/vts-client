@@ -11,9 +11,12 @@
   padding: 20px;
   font-size: 100%;
   color: rgba(20, 30, 197, 0.9);
-  font-weight: 600; }
+  font-weight: 600;
+}
 
 @media (max-width: 700px) {
   .Header {
-    top: 0px;
-    left: 56px; } }
+      top: 0px;
+      left: 56px;
+  }
+}

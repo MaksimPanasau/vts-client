@@ -7,14 +7,18 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; }
+  justify-content: space-between;
+}
 
 .VacationDayBox div.VacationDayBox > div.partial-time {
-  background-color: #eeeeee; }
+  background-color: #eeeeee;
+}
 
 .VacationDayBox.active {
-  border: 2px solid blue !important; }
+  border: 2px solid blue!important;
+}
 
 .VacationDayBox div.VacationDayBox-Hours {
   color: #aaa;
-  font-size: 12px; }
+  font-size: 12px;
+}

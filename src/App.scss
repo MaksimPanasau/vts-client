@@ -1,3 +1,4 @@
+$htmlColor: #444;
 html {
   height: 100vh;
   margin: 0;
@@ -5,10 +6,12 @@ html {
   box-sizing: border-box;
   font-size: 20px;
   font-family: 'Lato', sans-serif;
-  color: #444;
-  background: url("./assets/bg1.jpg") no-repeat center center fixed;
+  color: $htmlColor;
+
+  background: url('./assets/bg1.jpg') no-repeat center center fixed;
   background-size: cover;
-  -webkit-transform: translate3d(0, 0, 0); }
+  -webkit-transform: translate3d(0,0,0);
+}
 
 button,
 input,
@@ -16,8 +19,10 @@ optgroup,
 select,
 textarea {
   font-size: 100%;
-  font-family: 'Lato', sans-serif; }
+  font-family: 'Lato', sans-serif;
+}
 
 div#root {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}

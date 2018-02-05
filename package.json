@@ -40,6 +40,8 @@
     "lodash": "^4.17.4",
     "moment": "^2.20.1",
     "moment-range": "^3.1.1",
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.1.2",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
@@ -78,11 +80,15 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
     "start": "serve -s build",
-    "start-dev": "node scripts/start.js",
+    "start-js": "node scripts/start.js",
+    "start-dev": "npm-run-all -p watch-css start-js",
     "start-prod": "serve -s build",
     "heroku-postbuild": "rm -frd build && node scripts/build.js",
-    "build": "node scripts/build.js",
+    "build-js": "node scripts/build.js",
+    "build": "npm-run-all build-css build-js",
     "test": "jest"
   },
   "engines": {
