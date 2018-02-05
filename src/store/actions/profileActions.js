@@ -1,5 +1,5 @@
 import * as actionTypes from 'store/actions/actionTypes';
-import employees from '@/server/employees';
+import profile from '@/server/profile';
 import vacations from '@/server/vacations';
 import EmployeeModel from '@/model/employee';
 
@@ -7,19 +7,11 @@ export const fetchProfileDataAction = () => {
   return ({
     type: actionTypes.FETCH_PROFILE_DATA,
     payload: () => {
-      return employees.get('/me').then(response => {
-        return Promise.resolve({ employee: new EmployeeModel(response.data.employee) });
-      })
-      .catch(error => {
-        if (error) {
-          return Promise.reject({ error: 'Employee model not found' });
-        }
-      })
-      .then((data) => {
-        return vacations.get('/my').then(response => {
-          return { ...data, vacations: response.data.vacations };
-        });
-      });
+      return profile.get('').then(response => ({
+        employee: new EmployeeModel(response.data.employee),
+        vacations: response.data.vacations,
+        balance: response.data.balance
+      }));
     }
   });
 }

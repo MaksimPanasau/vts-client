@@ -1,3 +1,30 @@
-.ManageVacation > * {
+@import 'constants.scss';
+
+.ManageVacation-Inputs input {
   margin-bottom: 15px;
+}
+
+.ManageVacation-Buttons {
+  text-align: right;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-top: 20px;
+
+  button:last-child {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: $media-ui-md) {
+  .ManageVacation-Buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    button {
+      margin-right: 0;
+      margin-bottom: 10px;
+      max-width: 250px;
+      width: 100%;
+    }
+  }
 }

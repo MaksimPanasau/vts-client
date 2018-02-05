@@ -1,9 +1,11 @@
+@import 'constants.scss';
+
 .Button {
   padding: 20px;
   margin-right: 15px;
   font-weight: 500;
-  color: #fff;
-  background-color: #3A38E8;
+  color: $baseWhiteColor;
+  background-color: $baseThemeColor;
   cursor: pointer;
   border: 0;
   box-shadow: none;
@@ -13,5 +15,5 @@
 
 .Button:hover,
 .Button:active {
-  background-color: #403EFF;
+  background-color: $lightenThemeColor;
 }

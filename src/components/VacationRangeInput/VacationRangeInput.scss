@@ -1,5 +1,14 @@
 .VacationRangeInput > * {
   margin-bottom: 15px;
+
+  div.SingleDatePickerInput {
+    display: none;
+  }
+}
+
+div.SingleDatePicker_picker__portal {
+  background-color: transparent;
+  z-index: 150;
 }
 
 .VacationRangeInput div.DayDetails {
@@ -17,6 +26,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .VacationRangeInput div.DayDetails > div.partial-time {

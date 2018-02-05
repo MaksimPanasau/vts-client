@@ -1,4 +1,5 @@
-$htmlColor: #444;
+@import 'constants.scss';
+
 html {
   height: 100vh;
   margin: 0;
@@ -6,7 +7,7 @@ html {
   box-sizing: border-box;
   font-size: 20px;
   font-family: 'Lato', sans-serif;
-  color: $htmlColor;
+  color: $baseDarkColor;
 
   background: url('./assets/bg1.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -25,4 +26,16 @@ textarea {
 div#root {
   margin: 0;
   padding: 0;
+}
+
+@media (max-width: $media-ui-lg) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: $media-ui-md) {
+  html {
+    font-size: 16px;
+  }
 }

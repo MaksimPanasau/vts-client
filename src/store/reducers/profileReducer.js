@@ -7,6 +7,7 @@ import * as actionTypes from 'store/actions/actionTypes';
 const initialState = new Map({
   employee: new EmployeeModel(),
   vacations: [],
+  balance: 0,
   loading: false,
   error: null
 });
@@ -19,7 +20,8 @@ const reducer = (state = initialState, action) => {
       return state.set('loading', false)
                   .set('error', null)
                   .set('employee', action.payload.employee)
-                  .set('vacations', action.payload.vacations);
+                  .set('vacations', action.payload.vacations)
+                  .set('balance', action.payload.balance);
     case rejectedFor(actionTypes.FETCH_PROFILE_DATA):
       return state.set('loading', false)
                   .set('error', action.payload.error);

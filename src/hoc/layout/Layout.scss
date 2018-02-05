@@ -1,8 +1,10 @@
+@import 'constants.scss';
+
 .Layout-main {
   margin: 125px 30px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: $media-ui-sm) {
     .Layout-main {
         margin-left: 85px;
         margin-top: 65px;

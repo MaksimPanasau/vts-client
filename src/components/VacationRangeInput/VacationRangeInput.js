@@ -4,6 +4,7 @@ import { SingleDatePicker } from 'react-dates';
 import { Slider } from 'primereact/components/slider/Slider';
 import moment from 'moment';
 
+import Button from 'components/common/Button/Button';
 import { fetchHolidaysAction } from 'store/actions';
 import VacationDayBox from '../VacationDayBox/VacationDayBox';
 import Backdrop from 'components/common/Backdrop/Backdrop';
@@ -30,7 +31,8 @@ class VacationRangeInput extends Component {
     date: null,
     focusedInput: false,
     adjustedDayIndex: 0,
-    days: []
+    days: [],
+    lastSelectedDate: null
   }
 
   componentDidMount() {
@@ -41,6 +43,10 @@ class VacationRangeInput extends Component {
         this.props.fetchHolidays(year);
       }
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ days: nextProps.days });
   }
 
   handleDateChange = (date) => {
@@ -55,8 +61,9 @@ class VacationRangeInput extends Component {
         });
       }
 
-      this.setState({ date, days: filtered });
-      this.props.onChange(filtered);
+      const sorted = filtered.sort((a, b) => a.moment.isAfter(b.moment));
+      this.setState({ date, days: sorted });
+      this.props.onChange(sorted);
       this.setState({ isOpen: false });
     }
   }
@@ -85,17 +92,27 @@ class VacationRangeInput extends Component {
     }
   }
 
+  closeDatePickedHandler = ({ date }) => {
+    if (isSameDay(date, this.state.lastSelectedDate)) {
+      this.setState({ focusedInput: false });
+    }
+    this.setState({ lastSelectedDate: date });
+  }
+
   render() {
     const adjustedDay = this.state.days.length ? this.state.days[this.state.adjustedDayIndex] : null;
     return (
       <div className="VacationRangeInput">
-        <button onClick={() => this.setState({ focusedInput: !this.state.focusedInput })} >select dates</button>
+        <Button onClick={() => this.setState({ focusedInput: !this.state.focusedInput })} >Select Dates</Button>
         {
           this.state.focusedInput &&
           <Fragment>
             <Backdrop clicked={() => this.setState({ focusedInput: false }) } />
             <SingleDatePicker
                 id="date_input"
+                numberOfMonths={1}
+                withPortal={true}
+                onClose={this.closeDatePickedHandler}
                 date={this.state.date}
                 focused={this.state.focusedInput}
                 onDateChange={this.handleDateChange}
@@ -129,18 +146,10 @@ class VacationRangeInput extends Component {
         {
           adjustedDay &&
           <div>
-            Editing { adjustedDay.moment.format('DD/MM/YYYY') }
-            <br/>
-            <br/>
-            <div>{adjustedDay.hours}h</div>
-            <br/>
+            { adjustedDay.moment.format('DD/MM/YYYY') } / {adjustedDay.hours}h <br/>
             <Slider style={{ width: '200px', zIndex: 0 }} min={1} max={8} value={adjustedDay.hours} onChange={this.onChangeSlider} />
-            <br/>
           </div>
         }
-        <div>
-          Total:
-        </div>
       </div>
     );
   }

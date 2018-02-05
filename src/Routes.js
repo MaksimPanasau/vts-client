@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Profile from 'containers/Profile/Profile';
@@ -10,24 +10,24 @@ import EmployeeTable from 'containers/EmployeeTable/EmployeeTable';
 import Login from 'containers/Login/Login';
 
 const routes = () => (
-  <React.Fragment>
+  window.localStorage.token ?
+  (
     <Switch>
-      {
-        window.localStorage.token ?
-        (<Fragment>
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/users" component={Users} />
-            <Route exact path="/vacations" component={Vacations} />
-            <Route exact path="/employees" component={EmployeeTable} />
-            <Route exact path="/manage" component={ManageEmployee} />
-            <Route exact path="/manage/:id" component={ManageEmployee} />
-            <Route exact path="/view/:id" component={ViewEmployee} />
-            <Redirect from="/" to="/profile" />
-        </Fragment>) :
-        <Route component={Login} />
-      }
+      <Route exact path="/users" component={Users} />
+      <Route exact path="/vacations" component={Vacations} />
+      <Route exact path="/employees" component={EmployeeTable} />
+      <Route exact path="/manage" component={ManageEmployee} />
+      <Route exact path="/manage/:id" component={ManageEmployee} />
+      <Route exact path="/view/:id" component={ViewEmployee} />
+      <Route path="/profile" component={Profile} />
+      <Redirect from="/" to="/profile" />
     </Switch>
-  </React.Fragment>
+  ) :
+  (
+    <Switch>
+      <Route component={Login} />
+    </Switch>
+  )
 );
 
 export default routes;
