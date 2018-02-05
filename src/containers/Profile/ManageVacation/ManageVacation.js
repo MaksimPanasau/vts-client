@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { InputText } from 'primereact/components/inputtext/InputText';
 
+import Input from 'components/common/Input/Input';
 import Button from 'components/common/Button/Button';
 import VacationRangeInput from 'components/VacationRangeInput/VacationRangeInput';
 import './ManageVacation.css';
@@ -34,19 +34,20 @@ class ManageVacation extends Component {
 
   render() {
     return (
-      <div className="ManageVacation">
-        <span className="ui-float-label">
-          <InputText id="float-input" type="text" size="30" value={this.state.description} onChange={this.changeDescriptionHandler} />
-          <label htmlFor="float-input">Description</label>
-        </span>
-        <div>
-          <VacationRangeInput vacations={this.props.vacations} onChange={ (days) => {
-            this.setState({ vacation: { ...this.state.vacation, days }});
-          }} />
+      <div className="ui-g ManageVacation">
+        <div class="ui-g-6">
+          <Input label="Description" id="float-input" type="text" value={this.state.description} onChange={this.changeDescriptionHandler} />
         </div>
-        <div>
+        <div class="ui-g-6">
           <Button onClick={() => this.props.onSubmit(this.state.vacation)}>Submit</Button>
           <Button onClick={this.props.onClose}>Close</Button>
+        </div>
+        <div class="ui-g-12">
+          <div>
+            <VacationRangeInput vacations={this.props.vacations} onChange={ (days) => {
+              this.setState({ vacation: { ...this.state.vacation, days, type: this.props.type }});
+            }} />
+          </div>
         </div>
       </div>
     )

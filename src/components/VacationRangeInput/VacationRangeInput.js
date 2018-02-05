@@ -4,6 +4,7 @@ import { SingleDatePicker } from 'react-dates';
 import { Slider } from 'primereact/components/slider/Slider';
 import moment from 'moment';
 
+import Button from 'components/common/Button/Button';
 import { fetchHolidaysAction } from 'store/actions';
 import VacationDayBox from '../VacationDayBox/VacationDayBox';
 import Backdrop from 'components/common/Backdrop/Backdrop';
@@ -89,7 +90,7 @@ class VacationRangeInput extends Component {
     const adjustedDay = this.state.days.length ? this.state.days[this.state.adjustedDayIndex] : null;
     return (
       <div className="VacationRangeInput">
-        <button onClick={() => this.setState({ focusedInput: !this.state.focusedInput })} >select dates</button>
+        <Button onClick={() => this.setState({ focusedInput: !this.state.focusedInput })} >Select Dates</Button>
         {
           this.state.focusedInput &&
           <Fragment>
@@ -129,18 +130,10 @@ class VacationRangeInput extends Component {
         {
           adjustedDay &&
           <div>
-            Editing { adjustedDay.moment.format('DD/MM/YYYY') }
-            <br/>
-            <br/>
-            <div>{adjustedDay.hours}h</div>
-            <br/>
+            { adjustedDay.moment.format('DD/MM/YYYY') } / {adjustedDay.hours}h <br/>
             <Slider style={{ width: '200px', zIndex: 0 }} min={1} max={8} value={adjustedDay.hours} onChange={this.onChangeSlider} />
-            <br/>
           </div>
         }
-        <div>
-          Total:
-        </div>
       </div>
     );
   }

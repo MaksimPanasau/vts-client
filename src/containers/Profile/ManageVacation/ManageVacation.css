@@ -1,3 +1,9 @@
 .ManageVacation > * {
   margin-bottom: 15px;
 }
+
+.ManageVacation > div:nth-child(2) {
+  text-align: right;
+  margin-top: auto;
+  margin-bottom: auto;
+}

@@ -14,3 +14,7 @@
 .Profile-Header div:last-child button:last-child {
   margin-right: 0;
 }
+
+.Profile a {
+  margin-right: 10px;
+}

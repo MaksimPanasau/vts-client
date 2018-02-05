@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Button from 'components/common/Button/Button';
@@ -9,9 +9,19 @@ import VacationList from 'components/VacationList/VacationList';
 
 import './Profile.css';
 
+const formatBalance = (balance) => {
+    if (!balance) {
+        return '0 Days';
+    }
+    const days = Math.floor(balance / 8);
+    const hours = balance % 8;
+    return hours ? `${days} Days ${hours} Hours` : `${days} Days`;
+}
+
 @connect(store => ({
     employee: store.profile.get('employee'),
     vacations: store.profile.get('vacations'),
+    balance: store.profile.get('balance'),
     error: store.profile.get('error')
 }),
 dispatch => ({
@@ -22,7 +32,8 @@ dispatch => ({
 class Profile extends Component {
 
   state = {
-    manageVacationVisible: false
+    manageVacationVisible: false,
+    managedVacationType: 'VACATION',
   }
 
   componentDidMount() {
@@ -35,26 +46,31 @@ class Profile extends Component {
     this.setState({ manageVacationVisible: false });
   }
 
+  showManageVacation = (type) => {
+    this.setState({ manageVacationVisible: true, managedVacationType: type });
+  }
+
+  handleManageClose = () => {
+    this.setState({ manageVacationVisible: false });
+  }
+
   render() {
-    console.log(this.props.employee);
     let display = this.props.error;
     if (!this.props.error && this.props.employee) {
       display = (
-        <Fragment>
-          <div style={{ display: this.state.manageVacationVisible && 'none' }}>
-            <div class="ui-g Profile-Header">
-              <div class="ui-g-6">{this.props.employee.balanceFormatted}</div>
-              <div class="ui-g-6">
-                <Button onClick={() => this.setState({ manageVacationVisible: true })}>Add Vacation</Button>
-                <Button onClick={() => this.setState({ manageVacationVisible: true })}>Add Sick Leave</Button>
-              </div>
+        <div>
+          <div class="ui-g Profile-Header" style={{ display: this.state.manageVacationVisible && 'none' }}>
+            <div class="ui-g-6">{formatBalance(this.props.balance)}</div>
+            <div class="ui-g-6">
+              <Button onClick={() => this.showManageVacation('VACATION')}>Add Vacation</Button>
+              <Button onClick={() => this.showManageVacation('DAYOFF')}>Add Day Off</Button>
             </div>
-            <VacationList vacations={this.props.vacations} />
           </div>
           <div style={{ display: !this.state.manageVacationVisible && 'none' }}>
-            <ManageVacation onSubmit={this.handleSubmitVacation} onClose={() => this.setState({ manageVacationVisible: false })} />
+            <ManageVacation onSubmit={this.handleSubmitVacation} onClose={this.handleManageClose} type={this.state.managedVacationType} />
           </div>
-        </Fragment>
+          <VacationList vacations={this.props.vacations} />
+        </div>
       );
     }
     return (
