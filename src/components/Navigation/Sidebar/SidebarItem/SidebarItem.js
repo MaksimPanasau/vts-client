@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { hideSidebarAction } from '../../../../reducers/navigation/navigationActions';
+import { hideSidebarAction } from 'store/actions';
 
 import './SidebarItem.css';
 

@@ -13,12 +13,17 @@ import Sidebar from './Sidebar/Sidebar';
 )
 class Navigation extends Component {
   render() {
-    return (
+    return window.localStorage.token ?
+    (
       <Fragment>
         <Toolbar />
         <Header title={this.props.navLabel} />
         <SideDrawer />
         <Sidebar />
+      </Fragment>
+    ) : (
+      <Fragment>
+        <Toolbar />
       </Fragment>
     );
   }

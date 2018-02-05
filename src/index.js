@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { I18nextProvider } from 'react-i18next';
 
+import 'react-dates/initialize';
+
 import App from './App';
-import appStore from './reducers/appStore';
+import appStore from 'store/appStore';
 import i18n from './i18n/i18n';
 import registerServiceWorker from './registerServiceWorker';
 

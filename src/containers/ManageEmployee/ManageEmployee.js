@@ -2,18 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
-import { FormGroup, ControlLabel, Button } from 'react-bootstrap';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 
 import './ManageEmployee.css';
-import Input from '../../components/ValidationInput/ValidationInput';
-import EmployeeModel from '../../model/employee';
+import Button from 'components/common/Button/Button';
+import Input from 'components/ValidationInput/ValidationInput';
+import EmployeeModel from '@/model/employee';
 
-import { fetchEmployeeById } from '../../functions/employeeFunctions';
-import { addEmployeeAction, updateEmployeeAction } from '../../reducers/employee/employeeActions';
-import { setNavLabelAction } from '../../reducers/navigation/navigationActions';
+import { fetchEmployeeById } from '@/functions/employeeFunctions';
+import { addEmployeeAction, updateEmployeeAction, setNavLabelAction } from 'store/actions';
 
 @translate('translations')
 @connect(
@@ -121,15 +120,12 @@ export default class ManageEmployee extends React.Component {
                       validator={EmployeeModel.validateEmail} />
               </div>
               <div>
-                  <FormGroup validationState={this.state.validationState}>
-                      <ControlLabel>{t('manage-employee.groups')}</ControlLabel>
-                      <Select.Creatable
-                          multi
-                          onChange={this.handleGroupChange}
-                          options={this.transformGroups(this.getUniqEmployeeGroups())}
-                          value={this.getGroupOptions()}
-                      />
-                  </FormGroup>
+                <Select.Creatable
+                    multi
+                    onChange={this.handleGroupChange}
+                    options={this.transformGroups(this.getUniqEmployeeGroups())}
+                    value={this.getGroupOptions()}
+                />
               </div>
               <div className="ManageEmployee-buttons">
                   { this.state.update

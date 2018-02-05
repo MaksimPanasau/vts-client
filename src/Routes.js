@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import Profile from './containers/Profile/Profile';
-import Users from './containers/Users/Users';
-import Vacations from './containers/Vacations/Vacations';
-import ManageEmployee from './containers/ManageEmployee/ManageEmployee';
-import ViewEmployee from './containers/ViewEmployee/ViewEmployee';
-import EmployeeTable from './containers/EmployeeTable/EmployeeTable';
-import Login from './containers/Login/Login';
+import Profile from 'containers/Profile/Profile';
+import Users from 'containers/Users/Users';
+import Vacations from 'containers/Vacations/Vacations';
+import ManageEmployee from 'containers/ManageEmployee/ManageEmployee';
+import ViewEmployee from 'containers/ViewEmployee/ViewEmployee';
+import EmployeeTable from 'containers/EmployeeTable/EmployeeTable';
+import Login from 'containers/Login/Login';
 
 const routes = () => (
   <React.Fragment>

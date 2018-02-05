@@ -2,7 +2,7 @@ import React from 'react';
 import { Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import { clearAlertAction } from '../../reducers/alert/alertActions';
+import { clearAlertAction } from 'store/actions';
 
 const alert = (props) => {
     const alert = props.alert;

@@ -5,8 +5,8 @@ import { Sidebar as PrimeSidebar } from 'primereact/components/sidebar/Sidebar';
 import jwtDecode from 'jwt-decode';
 import _ from 'lodash';
 
-import { logout } from '../../../functions/loginFunctions';
-import { hideSidebarAction } from '../../../reducers/navigation/navigationActions';
+import { logout } from '@/functions/loginFunctions';
+import { hideSidebarAction } from 'store/actions';
 import SidebarItem from './SidebarItem/SidebarItem';
 
 import './Sidebar.css';
@@ -21,7 +21,7 @@ dispatch => ({
 class Sidebar extends React.Component {
   render() {
     const { t, i18n } = this.props;
-    const roles = localStorage.token ? jwtDecode(localStorage.token).roles : [];
+    const roles = localStorage.token ? (jwtDecode(localStorage.token).roles || []) : [];
     const roleLinks = {
       ADMIN: [
         { id: 'users', label: t('navigation.sidebar.users'), icon: 'fa fa-address-book', path: '/users' }
@@ -44,7 +44,7 @@ class Sidebar extends React.Component {
     const linksOrder = ['profile', 'users', 'employees', 'vacations', 'logout'];
     const links = _.uniqBy(roles.reduce((res, role) => res.concat(roleLinks[role]), []).concat(commonLinks), 'id');
     const sortedLinks = _.sortBy(links, link => linksOrder.findIndex(ord => ord === link.id));
-    const linksToRender = sortedLinks.map(link => <SidebarItem { ...link } />);
+    const linksToRender = sortedLinks.map(link => <SidebarItem key={link.id} { ...link } />);
     return (
       <PrimeSidebar className="Sidebar" visible={this.props.sidebarVisible} onHide={ this.props.hideSidebar }>
         { linksToRender }

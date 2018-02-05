@@ -1,9 +1,27 @@
-.ui-state-active {
-  background: #141EC5!important;
-  border-color: #141EC5!important;
+html {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 20px;
+  font-family: 'Lato', sans-serif;
+  color: #444;
+
+  background: url('./assets/bg1.jpg') no-repeat center center fixed;
+  background-size: cover;
+  -webkit-transform: translate3d(0,0,0);
 }
 
-.ui-state-active a {
-  background: #141EC5!important;
-  border-color: #141EC5!important;
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-size: 100%;
+  font-family: 'Lato', sans-serif;
+}
+
+div#root {
+  margin: 0;
+  padding: 0;
 }

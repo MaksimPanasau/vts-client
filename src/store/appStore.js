@@ -3,14 +3,18 @@ import promise from 'redux-promise-middleware';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
-import employees from './employee/employeesReducer';
-import alert from './alert/alertReducer';
-import navigation from './navigation/navigationReducer';
+import employees from './reducers/employeesReducer';
+import alert from './reducers/alertReducer';
+import navigation from './reducers/navigationReducer';
+import profile from './reducers/profileReducer';
+import calendar from './reducers/calendarReducer';
 
 const reducers = combineReducers({
     employees,
     alert,
-    navigation
+    navigation,
+    profile,
+    calendar
 });
 
 const middleware = applyMiddleware(createLogger(), thunk, promise());

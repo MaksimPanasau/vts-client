@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Panel } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import jwtDecode from 'jwt-decode';
 
-import Navigation from '../../components/Navigation/Navigation';
+import Navigation from 'components/Navigation/Navigation';
 
 import './Layout.css';
 
@@ -13,7 +11,6 @@ import './Layout.css';
 class Layout extends Component {
 
   render() {
-    const roles = localStorage.token ? jwtDecode(localStorage.token).roles : [];
     return (
       <React.Fragment>
         <Navigation />
