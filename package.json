@@ -85,7 +85,7 @@
     "start-js": "node scripts/start.js",
     "start-dev": "npm-run-all -p watch-css start-js",
     "start-prod": "serve -s build",
-    "heroku-postbuild": "rm -frd build && node scripts/build.js",
+    "heroku-postbuild": "rm -frd build && npm-run-all build-css build-js",
     "build-js": "node scripts/build.js",
     "build": "npm-run-all build-css build-js",
     "test": "jest"
