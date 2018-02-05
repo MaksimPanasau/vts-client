@@ -1,3 +1,5 @@
+@import 'constants.scss';
+
 .Profile {}
 
 .Profile-Header {
@@ -17,4 +19,28 @@
 
 .Profile a {
   margin-right: 10px;
+}
+
+@media (max-width: $media-ui-lg) {
+  .Profile-Header{
+     div:last-child {
+       display: flex;
+       flex-direction: column;
+       align-items: flex-end;
+       button {
+         margin-right: 0;
+         margin-bottom: 10px;
+         max-width: 250px;
+         width: 100%;
+       }
+     }
+  }
+}
+
+@media (max-width: $media-ui-md) {
+  .Profile-Header {
+     div:last-child {
+       align-items: flex-start;
+     }
+  }
 }

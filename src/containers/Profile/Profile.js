@@ -60,8 +60,8 @@ class Profile extends Component {
       display = (
         <div>
           <div class="ui-g Profile-Header" style={{ display: this.state.manageVacationVisible && 'none' }}>
-            <div class="ui-g-6">{formatBalance(this.props.balance)}</div>
-            <div class="ui-g-6">
+            <div class="ui-g-12 ui-md-6">{formatBalance(this.props.balance)}</div>
+            <div class="ui-g-12 ui-md-6">
               <Button onClick={() => this.showManageVacation('VACATION')}>Add Vacation</Button>
               <Button onClick={() => this.showManageVacation('DAYOFF')}>Add Day Off</Button>
             </div>

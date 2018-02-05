@@ -1,5 +1,14 @@
 .VacationRangeInput > * {
   margin-bottom: 15px;
+
+  div.SingleDatePickerInput {
+    display: none;
+  }
+}
+
+div.SingleDatePicker_picker__portal {
+  background-color: transparent;
+  z-index: 150;
 }
 
 .VacationRangeInput div.DayDetails {

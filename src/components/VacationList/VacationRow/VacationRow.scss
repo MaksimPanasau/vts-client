@@ -1,8 +1,4 @@
-.VacationRow {
-  margin-bottom: 10px;
-  background-color: rgba(255, 255, 255, 0.75)!important;
-  border-color: rgba(255, 255, 255, 0.9)!important;
-}
+@import 'constants.scss';
 
 .VacationRow div.ui-panel-content {
   display: flex;
@@ -19,11 +15,15 @@
   margin-top: 15px;
   padding: 10px;
   border-radius: 3px;
-  transition: background-color 200ms;
+  transition: background-color 200ms, color 200ms;
   cursor: pointer;
 }
 .VacationRow-Header:hover {
   background-color: rgba(255, 255, 255, 0.9);
+  color: $darkenDarkColor;
+}
+.VacationRow-Header:last-child {
+  word-wrap: break-word;
 }
 
 .VacationRow-Body {
@@ -31,4 +31,12 @@
   border-top: 1px solid #eee;
   height: 150px;
   padding: 15px 5px;
+}
+
+@media (max-width: $media-ui-md) {
+  .VacationRow-Header {
+    div:nth-child(2) {
+      text-align: right;
+    }
+  }
 }

@@ -1,3 +1,5 @@
+@import 'constants.scss';
+
 .Header {
   box-sizing: border-box;
   position: fixed;
@@ -14,7 +16,7 @@
   font-weight: 600;
 }
 
-@media (max-width: 700px) {
+@media (max-width: $media-ui-sm) {
   .Header {
       top: 0px;
       left: 56px;

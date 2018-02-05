@@ -23,7 +23,7 @@ class ManageVacation extends Component {
   }
 
   submitHandler = () => {
-    this.props.onSubmit(this.state.vacation);
+    this.props.onSubmit({ ...this.state.vacation, type: this.props.type });
     this.setState({ vacation: { days: [], description: '' } });
   }
 
@@ -32,22 +32,22 @@ class ManageVacation extends Component {
     this.setState({ vacation: { days: [], description: '' } });
   }
 
+  vacationRangeInputHandler = (days) => {
+    this.setState({ vacation: { ...this.state.vacation, days }});
+  }
+
   render() {
     return (
       <div className="ui-g ManageVacation">
-        <div class="ui-g-6">
-          <Input label="Description" id="float-input" type="text" value={this.state.description} onChange={this.changeDescriptionHandler} />
-        </div>
-        <div class="ui-g-6">
-          <Button onClick={() => this.props.onSubmit(this.state.vacation)}>Submit</Button>
-          <Button onClick={this.props.onClose}>Close</Button>
-        </div>
-        <div class="ui-g-12">
+        <div class="ui-g-12 ui-md-6 ManageVacation-Inputs">
+          <Input label="Description" id="float-input" type="text" value={this.state.vacation.description} onChange={this.changeDescriptionHandler} />
           <div>
-            <VacationRangeInput vacations={this.props.vacations} onChange={ (days) => {
-              this.setState({ vacation: { ...this.state.vacation, days, type: this.props.type }});
-            }} />
+            <VacationRangeInput vacations={this.props.vacations} days={this.state.vacation.days} onChange={this.vacationRangeInputHandler} />
           </div>
+        </div>
+        <div class="ui-g-12 ui-md-6 ManageVacation-Buttons">
+          <Button onClick={this.submitHandler}>Submit</Button>
+          <Button onClick={this.closeHandler}>Close</Button>
         </div>
       </div>
     )

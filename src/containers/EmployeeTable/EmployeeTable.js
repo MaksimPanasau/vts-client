@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import '../../../node_modules/font-awesome/css/font-awesome.css';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 

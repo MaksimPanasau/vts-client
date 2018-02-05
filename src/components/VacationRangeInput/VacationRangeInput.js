@@ -31,7 +31,8 @@ class VacationRangeInput extends Component {
     date: null,
     focusedInput: false,
     adjustedDayIndex: 0,
-    days: []
+    days: [],
+    lastSelectedDate: null
   }
 
   componentDidMount() {
@@ -42,6 +43,10 @@ class VacationRangeInput extends Component {
         this.props.fetchHolidays(year);
       }
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ days: nextProps.days });
   }
 
   handleDateChange = (date) => {
@@ -56,8 +61,9 @@ class VacationRangeInput extends Component {
         });
       }
 
-      this.setState({ date, days: filtered });
-      this.props.onChange(filtered);
+      const sorted = filtered.sort((a, b) => a.moment.isAfter(b.moment));
+      this.setState({ date, days: sorted });
+      this.props.onChange(sorted);
       this.setState({ isOpen: false });
     }
   }
@@ -86,6 +92,13 @@ class VacationRangeInput extends Component {
     }
   }
 
+  closeDatePickedHandler = ({ date }) => {
+    if (isSameDay(date, this.state.lastSelectedDate)) {
+      this.setState({ focusedInput: false });
+    }
+    this.setState({ lastSelectedDate: date });
+  }
+
   render() {
     const adjustedDay = this.state.days.length ? this.state.days[this.state.adjustedDayIndex] : null;
     return (
@@ -97,6 +110,9 @@ class VacationRangeInput extends Component {
             <Backdrop clicked={() => this.setState({ focusedInput: false }) } />
             <SingleDatePicker
                 id="date_input"
+                numberOfMonths={1}
+                withPortal={true}
+                onClose={this.closeDatePickedHandler}
                 date={this.state.date}
                 focused={this.state.focusedInput}
                 onDateChange={this.handleDateChange}

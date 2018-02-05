@@ -55,9 +55,9 @@ class VacationRow extends Component {
 
     const header = (
       <div className="ui-g VacationRow-Header" onClick={() => this.setState(prevState => ({ opened: !prevState.opened }))}>
-        <div className="ui-g-2">{`${durationDays}d`}{durationHours ? ` ${durationHours}h` : ''}</div>
-        <div className="ui-g-3">{vacationType[vacation.type]}</div>
-        <div className="ui-g-7">{vacation.description}</div>
+        <div className="ui-g-6 ui-md-2">{`${durationDays}d`}{durationHours ? ` ${durationHours}h` : ''}</div>
+        <div className="ui-g-6 ui-md-3">{vacationType[vacation.type]}</div>
+        <div className="ui-g-12 ui-md-7">{vacation.description}</div>
       </div>
     );
 
